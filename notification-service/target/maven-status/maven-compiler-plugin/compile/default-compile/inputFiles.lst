@@ -1,0 +1,9 @@
+C:\Users\migue\GIT\Markovitz\notification-service\src\main\java\com\markovitz\notificationservice\entity\Notification.java
+C:\Users\migue\GIT\Markovitz\notification-service\src\main\java\com\markovitz\notificationservice\event\PortfolioOptimizedEvent.java
+C:\Users\migue\GIT\Markovitz\notification-service\src\main\java\com\markovitz\notificationservice\service\NotificationService.java
+C:\Users\migue\GIT\Markovitz\notification-service\src\main\java\com\markovitz\notificationservice\dto\NotificationResponseDTO.java
+C:\Users\migue\GIT\Markovitz\notification-service\src\main\java\com\markovitz\notificationservice\config\RabbitMQConfig.java
+C:\Users\migue\GIT\Markovitz\notification-service\src\main\java\com\markovitz\notificationservice\controller\NotificationController.java
+C:\Users\migue\GIT\Markovitz\notification-service\src\main\java\com\markovitz\notificationservice\repository\NotificationRepository.java
+C:\Users\migue\GIT\Markovitz\notification-service\src\main\java\com\markovitz\notificationservice\NotificationServiceApplication.java
+C:\Users\migue\GIT\Markovitz\notification-service\src\main\java\com\markovitz\notificationservice\event\UserRegisteredEvent.java

@@ -1,0 +1,65 @@
+# =========================================================================
+# application.yml — asset-service
+# =========================================================================
+
+spring:
+  application:
+    name: asset-service
+
+  # =======================================================================
+  # BANCO H2 — banco separado do user-service!
+  # =======================================================================
+  # Cada microsserviço tem seu PRÓPRIO banco de dados — isso é fundamental
+  # na arquitetura de microsserviços.
+  #
+  # Princípio: "Database per Service"
+  # Cada serviço é dono dos seus dados e nenhum outro serviço acessa
+  # diretamente o banco do outro — a comunicação é sempre por API ou eventos.
+  #
+  datasource:
+    url: jdbc:h2:mem:assetdb   # banco separado: "assetdb" (diferente de "userdb")
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console  # acesse em http://localhost:8082/h2-console
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+  # =======================================================================
+  # RABBITMQ — mesma configuração do user-service
+  # =======================================================================
+  # Todos os microsserviços se conectam ao MESMO RabbitMQ.
+  # O RabbitMQ funciona como o "correio" central do sistema.
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        acknowledge-mode: auto
+
+# ==========================================================================
+# PORTA — diferente do user-service (8081)!
+# ==========================================================================
+# Cada microsserviço DEVE rodar em uma porta diferente.
+# Em produção com containers, isso não é necessário pois cada serviço
+# ficaria em seu próprio container com IP diferente.
+server:
+  port: 8082
+
+logging:
+  level:
+    com.markovitz: DEBUG
+    org.hibernate.SQL: DEBUG

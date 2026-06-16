@@ -1,0 +1,16 @@
+C:\Users\migue\GIT\Markovitz\portfolio-service\src\main\java\com\markovitz\portfolioservice\client\AssetServiceClient.java
+C:\Users\migue\GIT\Markovitz\portfolio-service\src\main\java\com\markovitz\portfolioservice\event\PortfolioOptimizedEvent.java
+C:\Users\migue\GIT\Markovitz\portfolio-service\src\main\java\com\markovitz\portfolioservice\controller\PortfolioController.java
+C:\Users\migue\GIT\Markovitz\portfolio-service\src\main\java\com\markovitz\portfolioservice\PortfolioServiceApplication.java
+C:\Users\migue\GIT\Markovitz\portfolio-service\src\main\java\com\markovitz\portfolioservice\markowitz\MarkowitzOptimizer.java
+C:\Users\migue\GIT\Markovitz\portfolio-service\src\main\java\com\markovitz\portfolioservice\entity\Portfolio.java
+C:\Users\migue\GIT\Markovitz\portfolio-service\src\main\java\com\markovitz\portfolioservice\repository\PortfolioAssetRepository.java
+C:\Users\migue\GIT\Markovitz\portfolio-service\src\main\java\com\markovitz\portfolioservice\entity\PortfolioAsset.java
+C:\Users\migue\GIT\Markovitz\portfolio-service\src\main\java\com\markovitz\portfolioservice\dto\CreatePortfolioRequestDTO.java
+C:\Users\migue\GIT\Markovitz\portfolio-service\src\main\java\com\markovitz\portfolioservice\event\AssetPriceUpdatedEvent.java
+C:\Users\migue\GIT\Markovitz\portfolio-service\src\main\java\com\markovitz\portfolioservice\exception\PortfolioNotFoundException.java
+C:\Users\migue\GIT\Markovitz\portfolio-service\src\main\java\com\markovitz\portfolioservice\service\PortfolioService.java
+C:\Users\migue\GIT\Markovitz\portfolio-service\src\main\java\com\markovitz\portfolioservice\dto\PortfolioResponseDTO.java
+C:\Users\migue\GIT\Markovitz\portfolio-service\src\main\java\com\markovitz\portfolioservice\config\RabbitMQConfig.java
+C:\Users\migue\GIT\Markovitz\portfolio-service\src\main\java\com\markovitz\portfolioservice\repository\PortfolioRepository.java
+C:\Users\migue\GIT\Markovitz\portfolio-service\src\main\java\com\markovitz\portfolioservice\exception\GlobalExceptionHandler.java

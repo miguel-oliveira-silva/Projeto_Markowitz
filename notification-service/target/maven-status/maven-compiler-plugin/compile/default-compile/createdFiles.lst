@@ -1,0 +1,12 @@
+com\markovitz\notificationservice\entity\Notification$Builder.class
+com\markovitz\notificationservice\entity\Notification$NotificationStatus.class
+com\markovitz\notificationservice\dto\NotificationResponseDTO.class
+com\markovitz\notificationservice\entity\Notification.class
+com\markovitz\notificationservice\entity\Notification$NotificationType.class
+com\markovitz\notificationservice\event\UserRegisteredEvent.class
+com\markovitz\notificationservice\controller\NotificationController.class
+com\markovitz\notificationservice\event\PortfolioOptimizedEvent.class
+com\markovitz\notificationservice\NotificationServiceApplication.class
+com\markovitz\notificationservice\service\NotificationService.class
+com\markovitz\notificationservice\config\RabbitMQConfig.class
+com\markovitz\notificationservice\repository\NotificationRepository.class

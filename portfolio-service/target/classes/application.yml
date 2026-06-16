@@ -1,0 +1,66 @@
+# =========================================================================
+# application.yml — portfolio-service
+# =========================================================================
+
+spring:
+  application:
+    name: portfolio-service
+
+  datasource:
+    # Banco próprio: "portfoliodb" — isolado dos outros serviços
+    url: jdbc:h2:mem:portfoliodb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console  # http://localhost:8083/h2-console
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        acknowledge-mode: auto
+        retry:
+          enabled: true
+          max-attempts: 3
+
+server:
+  port: 8083
+
+# =========================================================================
+# CONFIGURAÇÃO DO CLIENTE HTTP (RestTemplate)
+# =========================================================================
+# O portfolio-service precisa chamar o asset-service para buscar
+# as estatísticas dos ativos (μ e σ) antes de otimizar.
+# Configuramos a URL base do asset-service aqui.
+#
+# Em produção com Kubernetes ou Docker Compose, usaríamos o nome do
+# serviço (ex: http://asset-service:8082) ao invés de localhost.
+# ─────────────────────────────────────────────────────────────────────────
+asset-service:
+  base-url: http://localhost:8082
+
+# Taxa livre de risco usada no cálculo do Índice de Sharpe
+# Aproximação da taxa SELIC anualizada (ajuste conforme cenário econômico)
+markowitz:
+  risk-free-rate: 0.1075  # 10.75% ao ano (exemplo)
+
+logging:
+  level:
+    com.markovitz: DEBUG
+    org.hibernate.SQL: DEBUG

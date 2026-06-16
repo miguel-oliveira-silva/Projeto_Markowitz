@@ -1,0 +1,69 @@
+version: '3.8'
+
+# ============================================================================
+# DOCKER COMPOSE — Orquestração dos Serviços de Infraestrutura
+# ============================================================================
+#
+# O Docker Compose permite definir e rodar múltiplos containers Docker
+# com um único arquivo de configuração.
+#
+# COMO USAR:
+#   1. Certifique-se de ter Docker Desktop instalado e rodando
+#   2. Na raiz do projeto (onde está este arquivo), execute:
+#        docker-compose up -d
+#   3. Para parar:
+#        docker-compose down
+#   4. Para ver os logs:
+#        docker-compose logs -f rabbitmq
+#
+# O parâmetro "-d" (detached) roda os containers em segundo plano.
+#
+# ============================================================================
+
+services:
+
+  # ==========================================================================
+  # RABBITMQ — Broker de Mensagens para Comunicação Assíncrona
+  # ==========================================================================
+  rabbitmq:
+
+    # Imagem oficial do RabbitMQ com plugin de gerenciamento web
+    # "management" = inclui a interface web no http://localhost:15672
+    image: rabbitmq:3.12-management
+
+    # Nome do container (facilita referência nos logs e comandos docker)
+    container_name: markovitz-rabbitmq
+
+    # Mapeamento de portas: HOST:CONTAINER
+    #   5672  → porta AMQP (protocolo de mensageria — usado pela aplicação Java)
+    #   15672 → porta HTTP do Management UI (interface web de administração)
+    ports:
+      - "5672:5672"   # Porta do protocolo AMQP (aplicação Java conecta aqui)
+      - "15672:15672" # Porta da interface de gerenciamento web
+
+    # Variáveis de ambiente para configurar usuário e senha padrão
+    # Estes devem coincidir com o application.yml (spring.rabbitmq.username/password)
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+    # Volumes persistem os dados entre reinicializações do container
+    # Sem volume, as filas e mensagens seriam perdidas ao parar o container
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+    # Health check: verifica se o RabbitMQ está saudável
+    # O Spring Boot aguarda o container ficar healthy antes de conectar
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 30s   # Verifica a cada 30 segundos
+      timeout: 10s    # Aguarda até 10s pela resposta
+      retries: 5      # Tenta 5 vezes antes de marcar como unhealthy
+
+# ==========================================================================
+# VOLUMES — Armazenamento Persistente
+# ==========================================================================
+# Volumes são gerenciados pelo Docker e sobrevivem ao ciclo de vida dos containers.
+volumes:
+  rabbitmq_data:
+    driver: local

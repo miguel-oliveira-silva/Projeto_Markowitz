@@ -1,0 +1,12 @@
+C:\Users\migue\GIT\Markovitz\user-service\src\main\java\com\markovitz\userservice\config\RabbitMQConfig.java
+C:\Users\migue\GIT\Markovitz\user-service\src\main\java\com\markovitz\userservice\dto\UserResponseDTO.java
+C:\Users\migue\GIT\Markovitz\user-service\src\main\java\com\markovitz\userservice\controller\UserController.java
+C:\Users\migue\GIT\Markovitz\user-service\src\main\java\com\markovitz\userservice\dto\RegisterRequestDTO.java
+C:\Users\migue\GIT\Markovitz\user-service\src\main\java\com\markovitz\userservice\repository\UserRepository.java
+C:\Users\migue\GIT\Markovitz\user-service\src\main\java\com\markovitz\userservice\exception\EmailAlreadyExistsException.java
+C:\Users\migue\GIT\Markovitz\user-service\src\main\java\com\markovitz\userservice\exception\GlobalExceptionHandler.java
+C:\Users\migue\GIT\Markovitz\user-service\src\main\java\com\markovitz\userservice\exception\UserNotFoundException.java
+C:\Users\migue\GIT\Markovitz\user-service\src\main\java\com\markovitz\userservice\event\UserRegisteredEvent.java
+C:\Users\migue\GIT\Markovitz\user-service\src\main\java\com\markovitz\userservice\UserServiceApplication.java
+C:\Users\migue\GIT\Markovitz\user-service\src\main\java\com\markovitz\userservice\entity\User.java
+C:\Users\migue\GIT\Markovitz\user-service\src\main\java\com\markovitz\userservice\service\UserService.java

@@ -1,0 +1,96 @@
+# =========================================================================
+# APPLICATION.YML — Arquivo de Configuração do user-service
+# =========================================================================
+# O Spring Boot lê este arquivo automaticamente ao iniciar.
+# Sintaxe YAML usa indentação (2 espaços) para hierarquia.
+# =========================================================================
+
+spring:
+
+  application:
+    # Nome do microsserviço — aparece nos logs e no RabbitMQ Management UI
+    name: user-service
+
+  # =======================================================================
+  # CONFIGURAÇÃO DO BANCO DE DADOS H2 (em memória)
+  # =======================================================================
+  datasource:
+    # url: jdbc:h2:mem:NOME_DO_BANCO
+    # "mem" = in-memory (dados são perdidos ao reiniciar — ok para dev)
+    url: jdbc:h2:mem:userdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+
+  # Console web do H2 — acesse em http://localhost:8081/h2-console
+  # Útil para visualizar as tabelas durante o desenvolvimento
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  # =======================================================================
+  # CONFIGURAÇÃO DO JPA / HIBERNATE
+  # =======================================================================
+  jpa:
+    # ddl-auto: o que o Hibernate faz com o schema do banco ao iniciar
+    # "create-drop" = cria as tabelas ao iniciar e apaga ao fechar
+    # Alternativas: "create", "update", "validate", "none"
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        # Exibe as queries SQL no console (útil para debug/aprendizado)
+        show_sql: true
+        # Formata o SQL exibido de forma legível
+        format_sql: true
+
+  # =======================================================================
+  # CONFIGURAÇÃO DO RABBITMQ
+  # =======================================================================
+  rabbitmq:
+    # Host onde o RabbitMQ está rodando
+    # "localhost" = rodando na sua máquina (via Docker)
+    host: localhost
+
+    # Porta padrão do protocolo AMQP
+    port: 5672
+
+    # Usuário e senha padrão do RabbitMQ
+    username: guest
+    password: guest
+
+    # =======================================================================
+    # CONFIGURAÇÃO DO LISTENER (consumidor de mensagens)
+    # =======================================================================
+    listener:
+      simple:
+        # acknowledge-mode: como confirmar que a mensagem foi processada
+        # "auto" = confirma automaticamente ao receber
+        # "manual" = você precisa confirmar manualmente no código
+        acknowledge-mode: auto
+
+        # Número de tentativas em caso de erro ao processar mensagem
+        retry:
+          enabled: true
+          max-attempts: 3
+
+# ==========================================================================
+# CONFIGURAÇÃO DO SERVIDOR WEB
+# ==========================================================================
+server:
+  # Porta onde este microsserviço vai escutar requisições HTTP
+  port: 8081
+
+# ==========================================================================
+# CONFIGURAÇÃO DE LOGS
+# ==========================================================================
+logging:
+  level:
+    # Mostrar logs do nosso pacote em nível DEBUG (muito detalhado)
+    com.markovitz: DEBUG
+    # Mostrar queries SQL do Hibernate
+    org.hibernate.SQL: DEBUG
+    # Mostrar os parâmetros das queries (valores bindados)
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE

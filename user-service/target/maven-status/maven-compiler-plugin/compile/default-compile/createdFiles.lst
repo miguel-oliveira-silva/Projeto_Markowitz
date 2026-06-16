@@ -1,0 +1,14 @@
+com\markovitz\userservice\repository\UserRepository.class
+com\markovitz\userservice\entity\User$Builder.class
+com\markovitz\userservice\exception\UserNotFoundException.class
+com\markovitz\userservice\entity\User.class
+com\markovitz\userservice\service\UserService.class
+com\markovitz\userservice\dto\RegisterRequestDTO.class
+com\markovitz\userservice\UserServiceApplication.class
+com\markovitz\userservice\config\RabbitMQConfig.class
+com\markovitz\userservice\event\UserRegisteredEvent.class
+com\markovitz\userservice\exception\EmailAlreadyExistsException.class
+com\markovitz\userservice\exception\GlobalExceptionHandler.class
+com\markovitz\userservice\controller\UserController.class
+com\markovitz\userservice\dto\UserResponseDTO.class
+com\markovitz\userservice\entity\User$RiskProfile.class

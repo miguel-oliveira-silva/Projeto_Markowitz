@@ -1,0 +1,16 @@
+C:\Users\migue\GIT\Markovitz\asset-service\src\main\java\com\markovitz\assetservice\dto\AssetResponseDTO.java
+C:\Users\migue\GIT\Markovitz\asset-service\src\main\java\com\markovitz\assetservice\exception\AssetNotFoundException.java
+C:\Users\migue\GIT\Markovitz\asset-service\src\main\java\com\markovitz\assetservice\config\RabbitMQConfig.java
+C:\Users\migue\GIT\Markovitz\asset-service\src\main\java\com\markovitz\assetservice\event\AssetPriceUpdatedEvent.java
+C:\Users\migue\GIT\Markovitz\asset-service\src\main\java\com\markovitz\assetservice\AssetServiceApplication.java
+C:\Users\migue\GIT\Markovitz\asset-service\src\main\java\com\markovitz\assetservice\controller\AssetController.java
+C:\Users\migue\GIT\Markovitz\asset-service\src\main\java\com\markovitz\assetservice\exception\TickerAlreadyExistsException.java
+C:\Users\migue\GIT\Markovitz\asset-service\src\main\java\com\markovitz\assetservice\service\AssetService.java
+C:\Users\migue\GIT\Markovitz\asset-service\src\main\java\com\markovitz\assetservice\entity\Asset.java
+C:\Users\migue\GIT\Markovitz\asset-service\src\main\java\com\markovitz\assetservice\entity\AssetPrice.java
+C:\Users\migue\GIT\Markovitz\asset-service\src\main\java\com\markovitz\assetservice\exception\GlobalExceptionHandler.java
+C:\Users\migue\GIT\Markovitz\asset-service\src\main\java\com\markovitz\assetservice\dto\AssetRequestDTO.java
+C:\Users\migue\GIT\Markovitz\asset-service\src\main\java\com\markovitz\assetservice\dto\PriceRequestDTO.java
+C:\Users\migue\GIT\Markovitz\asset-service\src\main\java\com\markovitz\assetservice\repository\AssetPriceRepository.java
+C:\Users\migue\GIT\Markovitz\asset-service\src\main\java\com\markovitz\assetservice\repository\AssetRepository.java
+C:\Users\migue\GIT\Markovitz\asset-service\src\main\java\com\markovitz\assetservice\dto\AssetStatsDTO.java

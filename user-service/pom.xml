@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+        =====================================================================
+        PARENT DO SPRING BOOT
+        =====================================================================
+        O Spring Boot usa um "parent" POM que já vem com configurações padrão
+        para versões de dependências, plugins do Maven, etc.
+        Isso evita que você precise especificar versão para cada dependência.
+        =====================================================================
+    -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.5</version>
+        <relativePath/>
+    </parent>
+
+    <!--
+        =====================================================================
+        IDENTIFICAÇÃO DO PROJETO (GAV - GroupId, ArtifactId, Version)
+        =====================================================================
+        groupId    → organização/empresa (como um pacote Java invertido)
+        artifactId → nome único deste microsserviço
+        version    → versão atual do serviço
+        =====================================================================
+    -->
+    <groupId>com.markovitz</groupId>
+    <artifactId>user-service</artifactId>
+    <version>1.0.0</version>
+    <name>user-service</name>
+    <description>Microsserviço de gestão de usuários — Sistema Markovitz</description>
+
+    <!--
+        Java: usamos source/target 17 (LTS) para compatibilidade com Spring Boot 3.2.
+        Você está rodando Java 25, mas compilamos para Java 17 para garantir que o
+        bytecode seja compatível com servidores que ainda rodam Java 17.
+    -->
+    <properties>
+        <java.version>17</java.version>
+        <!-- Força o compilador a usar Java 17 como fonte e alvo -->
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+
+        <!--
+            =================================================================
+            SPRING WEB — para criar APIs REST (endpoints HTTP)
+            =================================================================
+            Inclui automaticamente: Tomcat (servidor), Jackson (JSON),
+            Spring MVC (roteamento de requisições).
+            =================================================================
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--
+            =================================================================
+            SPRING DATA JPA — para persistência de dados (banco de dados)
+            =================================================================
+            JPA (Java Persistence API) é uma especificação.
+            Hibernate é a implementação usada pelo Spring por padrão.
+            Com JPA, você mapeia classes Java para tabelas do banco.
+            =================================================================
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!--
+            =================================================================
+            SPRING AMQP — para comunicação assíncrona com RabbitMQ
+            =================================================================
+            AMQP (Advanced Message Queuing Protocol) é o protocolo que o
+            RabbitMQ usa. Esta dependência fornece:
+            - RabbitTemplate: para PUBLICAR mensagens nas filas
+            - @RabbitListener: para CONSUMIR mensagens das filas
+            =================================================================
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
+        <!--
+            =================================================================
+            VALIDATION — para validar dados de entrada nas requisições
+            =================================================================
+            Permite usar anotações como @NotBlank, @Email, @Size nos DTOs.
+            =================================================================
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!--
+            =================================================================
+            H2 DATABASE — banco de dados em memória para desenvolvimento
+            =================================================================
+            O H2 é iniciado junto com a aplicação e descartado ao fechar.
+            Perfeito para testes e aprendizado (não precisa instalar nada).
+            Em produção, seria substituído por PostgreSQL, MySQL, etc.
+            scope "runtime" = só é necessário em execução, não em compilação.
+            =================================================================
+        -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!--
+            NOTA SOBRE LOMBOK:
+            Lombok é uma biblioteca que gera getters, setters, construtores etc.
+            automaticamente via anotações (@Data, @Builder, @Slf4j).
+            Neste projeto optamos por escrever esses métodos explicitamente
+            para fins didáticos — assim você vê exatamente o que está acontecendo.
+            Em projetos reais com Java 17/21, o Lombok é muito útil.
+        -->
+
+        <!-- Dependência de testes do Spring Boot (JUnit 5, Mockito, etc.) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--
+                Plugin padrão do Spring Boot:
+                - Compila o projeto
+                - Gera um JAR executável (fat jar com todas as dependências)
+                - Executa "mvn spring-boot:run"
+            -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- Configuração padrão do plugin Spring Boot -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
