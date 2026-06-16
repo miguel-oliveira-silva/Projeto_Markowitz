@@ -1,8 +1,8 @@
-# 📈 Sistema Markovitz — Portfolio Optimizer
+# Sistema Markovitz — Portfolio Optimizer
 
 Sistema de microsserviços em **Spring Boot** que implementa a **Teoria Moderna do Portfólio de Harry Markowitz** para otimização de carteiras de investimento.
 
-## 🏗️ Arquitetura
+## Arquitetura
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -38,7 +38,7 @@ Sistema de microsserviços em **Spring Boot** que implementa a **Teoria Moderna 
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## 🔬 A Matemática de Markowitz
+## A Matemática de Markowitz
 
 O algoritmo implementado no `portfolio-service/MarkowitzOptimizer.java`:
 
@@ -62,7 +62,7 @@ wᵢ* = (1/σᵢ²) / Σⱼ(1/σⱼ²)
 wᵢ* = ((μᵢ - rf)/σᵢ²) / Σⱼ((μⱼ - rf)/σⱼ²)
 ```
 
-## 🚀 Como Executar
+## Como Executar
 
 ### Pré-requisitos
 - Java 17+ (ou Java 25)
@@ -139,7 +139,6 @@ POST http://localhost:8082/api/assets/PETR4/prices
 POST http://localhost:8082/api/assets/PETR4/prices
 { "price": 36.80, "priceDate": "2024-01-04" }
 ```
-*(Repita para VALE3 e WEGE3)*
 
 ### Passo 4 — Verificar estatísticas calculadas (μ e σ)
 ```http
